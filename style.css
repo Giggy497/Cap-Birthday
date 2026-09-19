@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+    --bg: #17161a;
+    --bg-panel: #201f23;
+    --line: #3a383d;
+    --orange: #ff6a2b;
+    --orange-soft: #ffb385;
+    --gray: #8f8b8f;
+    --gray-light: #c7c3c6;
+    --cream: #f2ede4;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--cream);
+    font-family: var(--font-mono);
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.25;
+    z-index: 0;
+}
+
+.radar {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 140vmax;
+    height: 140vmax;
+    transform: translate(-50%, -50%);
+    background: conic-gradient(from 0deg, rgba(255, 106, 43, 0.16), transparent 25%);
+    animation: sweep 6s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes sweep {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.hero {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.frame {
+    position: relative;
+    max-width: 680px;
+    width: 100%;
+    padding: 3.5rem 2.5rem;
+    text-align: center;
+    background: rgba(32, 31, 35, 0.55);
+    backdrop-filter: blur(2px);
+}
+
+.bracket {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border: 2px solid var(--orange);
+    opacity: 0.85;
+}
+.bracket.tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+.bracket.tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+.bracket.bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+.bracket.br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.eyebrow {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--orange);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+}
+
+h1 {
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--cream);
+    opacity: 0;
+}
+
+h1 span {
+    color: var(--orange);
+}
+
+.subtitle {
+    margin-top: 1.5rem;
+    min-height: 1.6em;
+    font-size: 1rem;
+    color: var(--gray-light);
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    margin-top: 2.5rem;
+    padding: 0.9rem 2rem;
+    background: transparent;
+    border: 1px solid var(--orange);
+    color: var(--orange);
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    opacity: 0;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.btn:hover {
+    background: var(--orange);
+    color: var(--bg);
+}
+
+.coords {
+    margin-top: 2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: var(--gray);
+    opacity: 0;
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 3rem; }
+    .frame { padding: 2.5rem 1.5rem; }
+}
